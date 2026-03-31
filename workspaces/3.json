@@ -1,0 +1,37 @@
+{
+  "functions": [
+    {
+      "name": "1.0*x + 1.0",
+      "expression": "1.0*x + 1.0",
+      "type": "UNKNOWN",
+      "color": "#b20000",
+      "visible": true
+    },
+    {
+      "name": "1.0*cos(x)",
+      "expression": "1.0*cos(x)",
+      "type": "UNKNOWN",
+      "color": "#0000b2",
+      "visible": true
+    },
+    {
+      "name": "d/dx(1.0*x + 1.0)",
+      "expression": "1",
+      "type": "Algebraic",
+      "color": "#7d1919",
+      "visible": true
+    }
+  ],
+  "intersections": [
+    {
+      "x": -1.4422048785382247E-8,
+      "y": 0.9999999855779512,
+      "functions": ["1.0*x + 1.0", "1.0*cos(x)", "1"]
+    }
+  ],
+  "shadedArea": {
+    "function": "1.0*x + 1.0",
+    "start": -9.15,
+    "end": 10.85
+  }
+}

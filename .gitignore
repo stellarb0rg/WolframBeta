@@ -1,0 +1,8 @@
+.DS_Store
+*.class
+bin/
+out/
+.vscode/
+.classpath
+.project
+*:Zone.Identifier

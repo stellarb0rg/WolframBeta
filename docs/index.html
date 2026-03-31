@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WolframBeta Web</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="logo-img" src="assets/logo.svg" alt="WolframBeta logo" />
+        <div>
+          <div class="title">WolframBeta</div>
+          <div class="subtitle">Graphing Calculator</div>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-title">Quick Functions</div>
+        <div class="grid buttons" id="quickButtons">
+          <button data-insert="sin(x)">sin(x)</button>
+          <button data-insert="cos(x)">cos(x)</button>
+          <button data-insert="tan(x)">tan(x)</button>
+          <button data-insert="log(x)">log(x)</button>
+          <button data-insert="ln(x)">ln(x)</button>
+          <button data-insert="exp(x)">exp(x)</button>
+          <button data-insert="sqrt(x)">√x</button>
+          <button data-insert="abs(x)">|x|</button>
+          <button data-insert="x^2">x²</button>
+          <button data-insert="x^3">x³</button>
+          <button data-insert="2x+1">2x+1</button>
+          <button data-insert="x^2+2x+1">x²+2x+1</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">Add Function</div>
+        <div class="input-row">
+          <input id="exprInput" type="text" placeholder="e.g., x^2 + 3x - 1" />
+          <button id="addBtn" class="primary">Plot</button>
+        </div>
+        <div class="hint">Supported: `sin cos tan log ln exp sqrt abs floor ceil`, `pi`, `e`, `^` for powers.</div>
+      </section>
+
+      <section class="panel grow">
+        <div class="panel-title">Functions</div>
+        <div id="functionList" class="function-list"></div>
+      </section>
+
+      <section class="panel" id="slidersPanel">
+        <div class="panel-title">Sliders</div>
+        <div id="sliders" class="sliders"></div>
+        <div class="hint">Use variables like <code>a</code>, <code>b</code>, <code>c</code> in expressions to create sliders.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">Calculus</div>
+        <label class="stack">
+          Function
+          <select id="analysisFunction"></select>
+        </label>
+        <div class="row">
+          <button id="derivativeBtn">Plot Derivative</button>
+          <button id="clearDerivativeBtn">Remove Derivatives</button>
+        </div>
+        <div class="divider"></div>
+        <div class="row split">
+          <label class="stack">
+            From
+            <input id="intStart" type="number" value="-2" step="0.1" />
+          </label>
+          <label class="stack">
+            To
+            <input id="intEnd" type="number" value="2" step="0.1" />
+          </label>
+        </div>
+        <div class="row">
+          <button id="integrateBtn" class="primary">Shade & Integrate</button>
+          <button id="clearAreaBtn">Clear Area</button>
+        </div>
+        <div id="integralResult" class="hint">Integral: —</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">Parameters</div>
+        <div class="row split">
+          <label class="stack">t min <input id="tMin" type="number" value="-10" step="0.1" /></label>
+          <label class="stack">t max <input id="tMax" type="number" value="10" step="0.1" /></label>
+        </div>
+        <div class="row split">
+          <label class="stack">θ min <input id="thetaMin" type="number" value="0" step="0.1" /></label>
+          <label class="stack">θ max <input id="thetaMax" type="number" value="6.283" step="0.1" /></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">View</div>
+        <div class="view-controls">
+          <label>Min X <input id="minX" type="number" value="-10" step="1" /></label>
+          <label>Max X <input id="maxX" type="number" value="10" step="1" /></label>
+          <label>Min Y <input id="minY" type="number" value="-10" step="1" /></label>
+          <label>Max Y <input id="maxY" type="number" value="10" step="1" /></label>
+        </div>
+        <div class="row">
+          <button id="applyView">Apply</button>
+          <button id="resetView">Reset</button>
+        </div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <div class="canvas-shell">
+        <canvas id="graph"></canvas>
+        <div class="overlay">
+          <div class="chip" id="coords">x: 0, y: 0</div>
+          <div class="chip" id="status">Ready</div>
+          <div class="zoom">
+            <button id="zoomIn">+</button>
+            <button id="zoomOut">-</button>
+            <button id="autoFit">Auto</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
